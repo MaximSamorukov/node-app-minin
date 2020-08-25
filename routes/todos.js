@@ -24,10 +24,25 @@ router.get('/create', (req, res) => {
 router.post('/create', async (req, res) => {
     const todo = new Todo({
         title: req.body.titleTitle,
-    })
+    }, {
+            allowProtoPropertiesByDefault: {
+                title: true
+            }
+        }, {
+            allowedProtoMethods: {
+                title: true
+            },
+        }, {
+            allowedProtoProperties: {
+                title: true
+            },
+        }
 
+
+    )
+    await console.log(todo);
     await todo.save();
-    //res.redirect('/')
+    await res.redirect('/')
 
 
 })

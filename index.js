@@ -10,6 +10,7 @@ const app = express();
 const hbs = exphbs.create({
     defaultLayout: 'main',
     extname: 'hbs',
+
 });
 
 app.engine('hbs', hbs.engine);
@@ -20,10 +21,10 @@ app.use(todoRoutes);
 
 async function start() {
     try {
-        await mongoose.connect('mongodb+srv://maxim:r1a2l3ph@cluster0.jifri.mongodb.net/nodeApp', {
+        await mongoose.connect('mongodb+srv://maxim:r1a2l3ph@cluster0.jifri.mongodb.net/node-app', {
             useNewUrlParser: true,
             useFindAndModify: false,
-            useUnifiedTopology: true,
+            //useUnifiedTopology: true,
         })
 
         app.listen(PORT, () => {
