@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const exphbs = require('express-handlebars');
 const todoRoutes = require('./routes/todos');
 
@@ -18,6 +19,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.use(express.urlencoded({ extended: true }));
 app.use(todoRoutes);
+app.use(express.static(path.join(__dirname, 'public')));
 
 async function start() {
     try {
