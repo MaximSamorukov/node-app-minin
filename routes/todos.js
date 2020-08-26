@@ -3,7 +3,7 @@ const Todo = require('../models/Todo');
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const todos = await Todo.find({})
+    const todos = await Todo.find({}).lean()
     await res.render('index', {
         title: 'Index page title',
         isIndex: true,
@@ -29,8 +29,10 @@ router.post('/create', async (req, res) => {
 
 router.post('/complete', async (req, res) => {
     const todo = await Todo.findById(req.body.id);
-
+    console.log(req.body.completed);
+    console.log(!!req.body.completed);
     todo.completed = !!req.body.completed;
+    console.log(todo);
     await todo.save();
 
     res.redirect('/');
