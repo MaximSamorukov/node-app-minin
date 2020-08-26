@@ -24,7 +24,7 @@ async function start() {
         await mongoose.connect('mongodb+srv://maxim:r1a2l3ph@cluster0.jifri.mongodb.net/node-app', {
             useNewUrlParser: true,
             useFindAndModify: false,
-            //useUnifiedTopology: true,
+            useUnifiedTopology: true,
         })
 
         app.listen(PORT, () => {

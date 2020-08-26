@@ -4,10 +4,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     const todos = await Todo.find({})
-
-
-
-    res.render('index', {
+    await res.render('index', {
         title: 'Index page title',
         isIndex: true,
         todos,
@@ -22,27 +19,12 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/create', async (req, res) => {
+    const title = req.body.title;
     const todo = new Todo({
-        title: req.body.titleTitle,
-    }, {
-            allowProtoPropertiesByDefault: {
-                title: true
-            }
-        }, {
-            allowedProtoMethods: {
-                title: true
-            },
-        }, {
-            allowedProtoProperties: {
-                title: true
-            },
-        }
-
-
-    )
-    await console.log(todo);
+        title,
+    })
     await todo.save();
-    await res.redirect('/')
+    res.redirect('/');
 
 
 })
